@@ -3,11 +3,12 @@
     label: string
   }
 
-  defineProps<DefaultButtonProps>()
+  defineProps<DefaultButtonProps>();
+  defineEmits<{(e: 'onClick'): void}>();
 </script>
 
 <template>
-  <button>{{ label }}</button>
+  <button @click.prevent="$emit('onClick')">{{ label }}</button>
 </template>
 
 <style scoped lang="scss">

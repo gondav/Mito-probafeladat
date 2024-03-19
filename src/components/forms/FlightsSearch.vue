@@ -1,5 +1,10 @@
 <script setup lang="ts">
   import DefaultButton from '../shared/button/DefaultButton.vue';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter()
+
+  const submitForm = () => router.push('/booking');
 </script>
 
 <template>
@@ -27,7 +32,7 @@
           class="location"
         />
       </section>
-      <DefaultButton label="Search" />
+      <DefaultButton @on-click="submitForm" label="Search" />
     </div>
   </form>
 </template>
