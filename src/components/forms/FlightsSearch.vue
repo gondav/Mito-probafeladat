@@ -32,7 +32,7 @@
           class="location"
         />
       </section>
-      <DefaultButton @on-click="submitForm" label="Search" />
+      <DefaultButton @on-click="submitForm" label="Search" variant="default" />
     </div>
   </form>
 </template>
