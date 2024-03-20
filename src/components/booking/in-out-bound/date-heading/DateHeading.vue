@@ -31,7 +31,6 @@
 
   section {
     padding: 18px 20px;
-    border-bottom: 1px solid rgba(229, 229, 229, 1);
 
     .wrapper, .heading-left, .heading-right {
       display: flex;
