@@ -10,8 +10,8 @@
       <p>Budapest</p>
     </div>
     <div class="icons">
-      <IconArrowRight />
-      <IconArrowLeft />
+      <IconArrowRight color="white" />
+      <IconArrowLeft color="white" />
     </div>
     <div class="destination">
       <p>Barcelona El Prat</p>
