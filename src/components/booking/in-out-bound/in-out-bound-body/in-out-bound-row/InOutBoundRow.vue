@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import IconGreyArroRight from '@/components/icons/IconGreyArroRight.vue';
+  import IconGreyArrowRight from '@/components/icons/IconGreyArrowRight.vue';
   import OutlineButton from '@/components/shared/button/OutlineButton.vue';
 </script>
 
@@ -8,7 +8,7 @@
   <div class="row">
     <div class="time">
       <p>06:02</p>
-      <IconGreyArroRight />
+      <IconGreyArrowRight />
       <p>07:35</p>
     </div>
     <ul class="prices-container">
