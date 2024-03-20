@@ -35,7 +35,6 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width: 500px;
     }
 
     h4 {
@@ -50,6 +49,10 @@
       flex-direction: row;
       align-items: center;
 
+      .locations {
+        justify-content: flex-start;
+      }
+
       h3 {
         margin-bottom: 0;
         margin-right: 46px;
@@ -57,6 +60,14 @@
 
       h4 {
         font-size: 22px;
+
+        &:nth-child(1) {
+          margin-right: 25px;
+        }
+
+        &:nth-child(3) {
+          margin-left: 25px;
+        }
       }
     }
   }

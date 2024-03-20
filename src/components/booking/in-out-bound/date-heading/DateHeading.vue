@@ -31,6 +31,7 @@
 
   section {
     padding: 18px 20px;
+    background-color: white;
 
     .wrapper, .heading-left, .heading-right {
       display: flex;
@@ -42,7 +43,6 @@
     }
 
     .wrapper {
-      max-width: 500px;
       justify-content: space-between;
     }
 
