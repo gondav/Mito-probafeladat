@@ -4,7 +4,6 @@
 </script>
 
 <template>
-
   <div class="row">
     <div class="time">
       <p>06:02</p>
@@ -51,7 +50,6 @@
   .prices-container {
     display: flex;
     justify-content: space-between;
-    max-width: 500px;
   }
 
   li {
@@ -70,9 +68,14 @@
       li {
         padding: 42px 17px;
 
+        &:nth-child(1) {
+          padding-left: 0;
+        }
+
         &:nth-child(2) {
           background-color: rgba(242, 242, 242, 1);
         }
+        
         &:nth-child(3) {
           padding-right: 0
         }
