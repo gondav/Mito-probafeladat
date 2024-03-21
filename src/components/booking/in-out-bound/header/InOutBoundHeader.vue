@@ -27,7 +27,7 @@
       text-transform: uppercase;
       font-size: 18px;
       margin-bottom: 18px;
-      color: rgba(145, 145, 145, 1);
+      color: $color-grey;
     }
 
     .locations {

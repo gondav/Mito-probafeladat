@@ -50,7 +50,7 @@
       text-transform: uppercase;
       font-size: 13px;
       font-weight: 600;
-      color: rgba(145, 145, 145, 1);
+      color: $color-grey;
     }
 
     .heading-left p {
