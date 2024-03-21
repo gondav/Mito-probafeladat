@@ -1,40 +1,73 @@
 <script setup lang="ts">
   import DefaultButton from '@/components/shared/button/DefaultButton.vue';
   import IconSeparator from '@/components/icons/IconSeparator.vue';
+  import type  { FlightDetails } from '@/interfaces/flight-details';
+  import { ref, watch } from 'vue';
+
+  interface FlightSummaryProps {
+    outbound? : FlightDetails;
+    inbound? : FlightDetails;
+  }
+
+  const props = defineProps<FlightSummaryProps>();
+
+  const totalPrice = ref(0);
+
+  const calculateTotalPrice = (): number =>{
+
+    if (!props.outbound && !props.inbound) {
+      return 0;
+
+    } else if (props.outbound && !props.inbound) {
+      return props.outbound.price;
+
+    } else if (!props.outbound && props.inbound) {
+      return props.inbound.price;
+      
+    } else {
+      return props.outbound!.price + props.inbound!.price;
+    }
+  }
+
+  watch([() => props.outbound, () => props.inbound], () => {
+    totalPrice.value = calculateTotalPrice();
+  }, { immediate: true });
+
 </script>
 
 <template>
   <aside>
     <section class="top-summary">
       <p>Flights</p>
-      <p class="price">$29.98</p>
+      <p class="price">${{ totalPrice }}</p>
     </section>
-    <section>
+    <p v-if="(!outbound && !inbound)" class="default-text">Choose an outbound flight</p>
+    <section v-if="outbound">
       <div class="date">
         <p class="month">Nov</p>
         <p class="day">4</p>
       </div>
       <div class="destination">
-         <h4>Budapest - Barcelona El Prat</h4>
+         <h4>{{ outbound.origin }} - {{ outbound.destination }}</h4>
          <p>Wed 06:02 - 07:35</p>
       </div>
     </section>
-    <IconSeparator />
-    <section>
+    <IconSeparator v-if="!!(outbound && inbound)" />
+    <section v-if="inbound">
       <div class="date">
         <p class="month">Nov</p>
         <p class="day">4</p>
       </div >
       <div class="destination">
-         <h4>Barcelona El Prat - Budapest</h4>
+         <h4>{{ inbound.origin }} - {{ inbound.destination }}</h4>
          <p>Wed 06:02 - 07:35</p>
       </div>
     </section>
     <section class="summary">
       <span>Total</span>
-      <span>$29.98</span>
+      <span>${{ totalPrice }}</span>
     </section>
-    <DefaultButton label="Pay Now" variant="accent"/>
+    <DefaultButton :is-disabled="!totalPrice" label="Pay Now" variant="accent"/>
   </aside>
 </template>
 
@@ -43,8 +76,15 @@
     max-width: 230px;
     display: grid;
     row-gap: 15px;
-    border-top: 1px solid rgba(193, 193, 193, 1);
+    border-top: 1px solid $color-light-grey;
     background-color: $color-white;
+
+    .default-text {
+      margin: 21px 0 21px 15px;
+      color: $color-grey;
+      font-weight: 600;
+      max-width: 186px;
+    }
   }
 
   section {
@@ -74,10 +114,15 @@
     &.summary {
       justify-content: space-between;
       width: 100%;
+      min-width: 230px;
       height: 50px;
       background-color: $color-primary;
       color: $color-white;
       text-transform: uppercase;
+
+      span {
+        font-weight: 600;
+      }
     }
 
     .date {
