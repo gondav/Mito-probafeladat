@@ -3,6 +3,7 @@
   import IconSeparator from '@/components/icons/IconSeparator.vue';
   import type  { FlightDetails } from '@/interfaces/flight-details';
   import { ref, watch } from 'vue';
+  import { getMonth, getDay, formatTime, getDayName } from '@/utilities/date-manipulation';
 
   interface FlightSummaryProps {
     outbound? : FlightDetails;
@@ -33,24 +34,7 @@
     totalPrice.value = calculateTotalPrice();
   }, { immediate: true });
 
-  const getMonth = (date: Date): string => {
-    return date.toLocaleString('en-US', { month: 'short' });
-  };
 
-  const getDay = (date: Date): string => {
-    return date.getDate().toString();
-  };
-
-  const formatTime = (time: Date): string => {
-    const hours = time.getHours().toString().padStart(2, '0');
-    const minutes = time.getMinutes().toString().padStart(2, '0');
-    return `${hours}:${minutes}`;
-  };
-
-  const getDayName = (date: Date): string => {
-    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    return daysOfWeek[date.getDay()];
-  };
 
 </script>
 
