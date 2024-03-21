@@ -33,6 +33,25 @@
     totalPrice.value = calculateTotalPrice();
   }, { immediate: true });
 
+  const getMonth = (date: Date): string => {
+    return date.toLocaleString('en-US', { month: 'short' });
+  };
+
+  const getDay = (date: Date): string => {
+    return date.getDate().toString();
+  };
+
+  const formatTime = (time: Date): string => {
+    const hours = time.getHours().toString().padStart(2, '0');
+    const minutes = time.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  };
+
+  const getDayName = (date: Date): string => {
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    return daysOfWeek[date.getDay()];
+  };
+
 </script>
 
 <template>
@@ -44,23 +63,23 @@
     <p v-if="(!outbound && !inbound)" class="default-text">Choose an outbound flight</p>
     <section v-if="outbound">
       <div class="date">
-        <p class="month">Nov</p>
-        <p class="day">4</p>
+        <p class="month">{{ getMonth(outbound.departureTime) }}</p>
+        <p class="day">{{ getDay(outbound.arrivalTime) }}</p>
       </div>
       <div class="destination">
          <h4>{{ outbound.origin }} - {{ outbound.destination }}</h4>
-         <p>Wed 06:02 - 07:35</p>
+         <p>{{`${getDayName(outbound.departureTime)} ${formatTime(outbound.departureTime)} - ${formatTime(outbound.arrivalTime)}`}}</p>
       </div>
     </section>
     <IconSeparator v-if="!!(outbound && inbound)" />
     <section v-if="inbound">
       <div class="date">
-        <p class="month">Nov</p>
-        <p class="day">4</p>
+        <p class="month">{{ getMonth(inbound.departureTime) }}</p>
+        <p class="day">{{ getDay(inbound.arrivalTime) }}</p>
       </div >
       <div class="destination">
          <h4>{{ inbound.origin }} - {{ inbound.destination }}</h4>
-         <p>Wed 06:02 - 07:35</p>
+         <p>{{`${getDayName(inbound.departureTime)} ${formatTime(inbound.departureTime)} - ${formatTime(inbound.arrivalTime)}`}}</p>
       </div>
     </section>
     <section class="summary">
