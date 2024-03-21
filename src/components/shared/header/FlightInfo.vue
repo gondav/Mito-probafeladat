@@ -32,7 +32,7 @@
   }
   
   p {
-    color: rgba(255, 255, 255, 1);
+    color: $color-white;
 
     &.leaving {
       font-size: 10px;

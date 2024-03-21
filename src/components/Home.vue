@@ -23,7 +23,7 @@
       min-width: 320;
       width: 100%;
       max-width: 570px;
-      background-color: rgba(255, 255, 255, 1);
+      background-color: $color-white;
       box-shadow: 6px 6px 15px 0px rgba(0, 0, 0, 0.1);
     }
   }

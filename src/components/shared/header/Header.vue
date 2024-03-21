@@ -36,7 +36,7 @@
   }
 
   p {
-    color: rgba(255, 255, 255, 1);
+    color: $color-white;
 
     &.title {
       margin: 0 15px;

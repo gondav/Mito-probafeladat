@@ -18,7 +18,7 @@
     width: 100%;
     height: 50px;
     border: none;
-    color: rgba(255, 255, 255, 1);
+    color: $color-white;
     font-size: 16px;
     text-transform: uppercase;
     cursor: pointer;
