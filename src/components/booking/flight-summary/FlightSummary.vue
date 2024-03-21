@@ -70,7 +70,7 @@
       <span>Total</span>
       <span>${{ totalPrice }}</span>
     </section>
-    <DefaultButton :is-disabled="!totalPrice" label="Pay Now" variant="accent"/>
+    <DefaultButton :is-disabled="!outbound" label="Pay Now" variant="accent"/>
   </aside>
 </template>
 
