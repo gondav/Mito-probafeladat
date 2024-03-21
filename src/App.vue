@@ -2,8 +2,9 @@
 </script>
 
 <template>
-hello
+  <RouterView />
 </template>
 
 <style scoped lang="scss">
+
 </style>
