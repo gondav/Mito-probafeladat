@@ -3,6 +3,27 @@
   import Headline from './headline/Headline.vue';
   import FlightSummary from './flight-summary/FlightSummary.vue';
   import InOutBound from './in-out-bound/InOutBound.vue';
+  import type  { FlightDetails } from '@/interfaces/flight-details';
+
+  const outboundFlight: FlightDetails = {
+  flightNumber: 'ABC123',
+  origin: 'New York',
+  destination: 'Los Angeles',
+  departureTime: new Date('2024-03-25T08:00:00'),
+  arrivalTime: new Date('2024-03-25T10:30:00'),
+  isOutbound: true,
+  price: 250
+};
+
+  const inboundFlight: FlightDetails = {
+    flightNumber: 'XYZ456',
+    origin: 'Los Angeles',
+    destination: 'New York',
+    departureTime: new Date('2024-04-01T11:00:00'),
+    arrivalTime: new Date('2024-04-01T13:30:00'),
+    isOutbound: false,
+    price: 200
+  };
 </script>
 
 <template>
@@ -10,7 +31,7 @@
   <div class="booking-container">
     <div class="booking-wrapper">
       <div class="summary">
-        <FlightSummary />
+        <FlightSummary :outbound="outboundFlight" :inbound="inboundFlight" />
       </div>
       <div class="flight-select">
         <div class="headline">
